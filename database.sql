@@ -15,7 +15,7 @@ CREATE TABLE grocery (
 	unit varchar(20)
 );
 
--- POST grocery item
+-- POST grocery item (seed data)
 INSERT INTO "grocery" ("name", "quantity", "unit") 
 VALUES ('apples', '1', 'lb'), ('oranges', '2', 'lb'), ('milt', '1', 'gal');
 
@@ -23,7 +23,7 @@ VALUES ('apples', '1', 'lb'), ('oranges', '2', 'lb'), ('milt', '1', 'gal');
 SELECT * FROM "grocery";
 
 -- UPDATE
-UPDATE "grocery" SET "name"='braeburn apples' WHERE "id"='1' RETURNING *;
+UPDATE "grocery" SET "name"='braeburn apples', "quantity"='2', "unit"='bag'  WHERE "id"='2' RETURNING *;
 
 -- DELETE
 DELETE FROM "grocery" WHERE "id"='1';
