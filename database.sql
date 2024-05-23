@@ -23,12 +23,12 @@ VALUES ('apples', '1', 'lb'), ('oranges', '2', 'lb'), ('milt', '1', 'gal');
 SELECT * FROM "grocery";
 
 -- UPDATE
-UPDATE "grocery" SET "name"='braeburn apples' WHERE "id"='1';
+UPDATE "grocery" SET "name"='braeburn apples' WHERE "id"='1' RETURNING *;
 
 -- DELETE
 DELETE FROM "grocery" WHERE "id"='1';
 
 -- POST another grocery item
 INSERT INTO "grocery" ("name", "quantity", "unit") 
-VALUES ('granny smith apples', '1', 'lb');
+VALUES ('granny smith apples', '1', 'lb') RETURNING *;
 
