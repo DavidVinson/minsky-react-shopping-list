@@ -85,7 +85,7 @@ router.put('/purchase/:id', async (req, res) => {
 //PUT regular update
 router.put('/:id', async (req, res) => {
   console.log(`UPDATE grocery item: ${req.params.id}`);
-  //sql statement
+  //sql statement: note, not using req.body.purchased here, another endpoint handles purchased
   const groceryItem = {
     id: req.params.id,
     name: req.body.name,

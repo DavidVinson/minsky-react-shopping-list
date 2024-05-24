@@ -2,7 +2,7 @@ import React from 'react';
 import ShoppingItem from './ShoppingItem';
 import axios from 'axios';
 
-function ShoppingList({ groceryList, fetchGrocery }) {
+function ShoppingList({ groceryList, fetchGrocery, handleEdit }) {
   const handlePurchaseReset = async (event) => {
     event.preventDefault();
     try {
@@ -28,7 +28,7 @@ function ShoppingList({ groceryList, fetchGrocery }) {
       <button onClick={(event) => handleDeleteAll(event)}>Clear</button>
 
       {groceryList?.map((item) => (
-        <ShoppingItem key={item.id} item={item} fetchGrocery={fetchGrocery} />
+        <ShoppingItem key={item.id} item={item} fetchGrocery={fetchGrocery} handleEdit={handleEdit} />
       ))}
     </section>
   );

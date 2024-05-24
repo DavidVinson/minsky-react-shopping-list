@@ -7,6 +7,7 @@ import ShoppingList from '../Shopping/ShoppingList.jsx';
 
 function App() {
   const [groceryList, setGroceryList] = useState([]);
+  const [editItem, setEditItem] = useState(undefined);
 
   //first load grocery data
   useEffect(() => {
@@ -24,12 +25,22 @@ function App() {
     }
   };
 
+  const handleEdit = (itemId) => {
+    console.log('Edit this item with local state', itemId);
+    if (itemId) {
+      const foundItem = groceryList.find((item) => Number(item.id) === Number(itemId));
+      console.log('found item', foundItem);
+      // {id: '23', name: 'apples', quantity: '2', unit: 'ea'}
+      setEditItem(foundItem);
+    }
+  };
+
   return (
     <div className='App'>
       <Header />
       <main>
-        <ShoppingForm fetchGrocery={fetchGrocery} />
-        <ShoppingList groceryList={groceryList} fetchGrocery={fetchGrocery} />
+        <ShoppingForm fetchGrocery={fetchGrocery} editItem={editItem} setEditItem={setEditItem} />
+        <ShoppingList groceryList={groceryList} fetchGrocery={fetchGrocery} handleEdit={handleEdit} />
       </main>
     </div>
   );

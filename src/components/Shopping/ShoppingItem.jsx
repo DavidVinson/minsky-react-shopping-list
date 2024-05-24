@@ -3,7 +3,7 @@ import axios from 'axios';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 
-function ShoppingItem({ item, fetchGrocery }) {
+function ShoppingItem({ item, fetchGrocery, handleEdit }) {
   // toggle purchase via db call
   const handlePurchase = async (event, itemId) => {
     event.preventDefault();
@@ -34,6 +34,9 @@ function ShoppingItem({ item, fetchGrocery }) {
         </Card.Text>
         <Button className='mx-1' variant='primary' size='sm' onClick={(event) => handlePurchase(event, item.id)}>
           {item.purchased ? 'Remove' : 'Purchase'}
+        </Button>
+        <Button className='mx-1' variant='primary' size='sm' onClick={() => handleEdit(item.id)}>
+          Edit
         </Button>
         <Button className='mx-1' variant='primary' size='sm' onClick={(event) => handleDelete(event, item.id)}>
           Delete
