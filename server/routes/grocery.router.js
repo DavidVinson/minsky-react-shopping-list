@@ -14,8 +14,8 @@ router.get('/', async (req, res) => {
   const sqlText = `SELECT * FROM "grocery";`;
   //use db pool
   try {
-    const response = await pool.query(sqlText);
-    res.send(response.rows);
+    const result = await pool.query(sqlText);
+    res.send(result.rows);
   } catch (error) {
     console.error(`GET Server Error`, error);
     res.status(500).send(error);
@@ -41,8 +41,8 @@ router.post('/', async (req, res) => {
     VALUES ($1, $2, $3) RETURNING *;`;
     //use db pool
     try {
-      const response = await pool.query(sqlText, [groceryItem.name, groceryItem.quantity, groceryItem.unit]);
-      res.status(201).send(response.rows[0]);
+      const result = await pool.query(sqlText, [groceryItem.name, groceryItem.quantity, groceryItem.unit]);
+      res.status(201).send(result.rows[0]);
     } catch (error) {
       console.error(`POST Server Error`, error);
       res.status(500).send(error);
@@ -70,13 +70,13 @@ router.put('/:id', async (req, res) => {
       WHERE "id"=$1 RETURNING *;`;
     //use db pool
     try {
-      const response = await pool.query(sqlText, [
+      const result = await pool.query(sqlText, [
         groceryItem.id,
         groceryItem.name,
         groceryItem.quantity,
         groceryItem.unit,
       ]);
-      res.status(201).send(response.rows[0]);
+      res.status(201).send(result.rows[0]);
     } catch (error) {
       console.error(`PUT Server Error`, error);
       res.status(500).send(error);
