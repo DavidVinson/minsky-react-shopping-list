@@ -92,7 +92,7 @@ router.delete('/:id', async (req, res) => {
   //use db pool
   try {
     await pool.query(sqlText, [req.params.id]);
-    res.status(204);
+    res.sendStatus(204);
   } catch (error) {
     console.error(`DELETE Server Error`, error);
     res.status(500).send(error);
