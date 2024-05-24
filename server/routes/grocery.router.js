@@ -28,7 +28,7 @@ router.post('/', async (req, res) => {
   //sql statement
   const groceryItem = {
     name: req.body.name,
-    quantity: req.body.quantity,
+    quantity: Number(req.body.quantity),
     unit: req.body.unit,
   };
   if (!isGroceryItemValid(groceryItem)) {
